@@ -120,14 +120,27 @@ public class Main {
             int cantidad = leerEntero("Cantidad: ");
             Producto producto = tienda.getProductos().get(idxProducto);
 
-            venta.registrarVenta(producto, cantidad);
+//            venta.registrarVenta(producto, cantidad);
+            
+            boolean agregado = venta.agregarDetalle(producto, cantidad);
+            if (agregado) {
+                System.out.println("Producto agregado a la venta.");
+            } else {
+                System.out.println("No hay suficiente stock para " + producto.getNombre());
+            }
 
             System.out.print("¿Deseas agregar otro producto a la venta? (s/n): ");
             continuar = sc.nextLine().trim().toLowerCase();
         } while (continuar.equals("s"));
 
-        tienda.registrarVenta(venta);
-        System.out.println("Venta registrada correctamente.");
+//        tienda.registrarVenta(venta);
+//        System.out.println("Venta registrada correctamente.");
+        // Al terminar la composición de la venta:
+        venta.calcularTotal();          // asegura que el total está actualizado
+        tienda.registrarVenta(venta);  // persiste la venta en la tienda
+        cliente.agregarCompra(venta);   // registra la compra en el historial del cliente
+        venta.mostrarFactura();         // mostramos la factura al finalizar
+        System.out.println("✅ Venta registrada correctamente.");
     }
 
     private static void consultarVentas() {

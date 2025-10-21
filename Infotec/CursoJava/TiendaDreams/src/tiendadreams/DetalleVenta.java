@@ -29,7 +29,7 @@ public class DetalleVenta {
 
     @Override
     public String toString() {
-        return String.format("%s x%d  @ %.2f  = %.2f",
+        return String.format("%s x %d  $ %.2f = %.2f",
                 producto.getNombre(), cantidad, producto.getPrecio(), subtotal);
     }
 }
