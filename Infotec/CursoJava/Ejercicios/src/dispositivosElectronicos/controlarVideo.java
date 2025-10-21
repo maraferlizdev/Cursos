@@ -1,0 +1,15 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
+ */
+package dispositivosElectronicos;
+
+/**
+ *
+ * @author dsi
+ */
+public interface controlarVideo {
+    void reproducirVideo();
+    void paudarVideo();
+    void grabarVideo();
+}
