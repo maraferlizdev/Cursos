@@ -10,13 +10,15 @@ import java.util.Scanner;
  * @author dsi
  */
 public class Main {
+    // se crea la tienda con sus datos
     private static TiendaDreams tienda = new TiendaDreams("Dreams Store", "Av. Principal #123");
     private static Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
-        
+        // siclo para estar en el menu
         int opcion;
         do {
+            //muestra el menu
             mostrarMenu();
             opcion = leerEntero("Selecciona una opción: ");
             switch (opcion) {
@@ -64,11 +66,11 @@ public class Main {
         System.out.println("8. Salir");
         System.out.println("===========================");
     }
-    
+    // metodo para mostrar opciones
     private static void registrarMenu(String opcion){
         System.out.println("\n--- Registrar ---" + opcion);
     }
-    
+    // metodo para registrar productos
     private static void registrarProducto() {
         registrarMenu("Productos");
         String nombre = solicitarCampo("Nombre");
@@ -78,7 +80,7 @@ public class Main {
 
         tienda.registrarProducto(nombre, precio, categoria, stock);
     }
-
+    // metodo para registrar clientes
     private static void registrarCliente() {
         registrarMenu("Cliente");
         String nombre = solicitarCampo("Nombre");
@@ -87,37 +89,37 @@ public class Main {
         
         tienda.registrarCliente(nombre, correo, telefono);
     }
-
+    // metodo para registrar una venta
     private static void registrarVenta() {
         registrarMenu("Venta");
+        // validar que existan datos de cliente y productos para continuar
         if (tienda.getClientes().isEmpty() || tienda.getProductos().isEmpty()) {
             System.out.println("Debes tener al menos un cliente y un producto registrado.");
             return;
         }
-
+        // muesta el listado de clientes
         System.out.println("Clientes disponibles:");
         for (int i = 0; i < tienda.getClientes().size(); i++) {
             System.out.println((i + 1) + ". " + tienda.getClientes().get(i).getNombre());
         }
+        //solicita la selección del cliente usando el metodo para leer y convertir el dato
         int idxCliente = leerEntero("Selecciona cliente: ") - 1;
         Cliente cliente = tienda.getClientes().get(idxCliente);
-
+        // una vez obtenido el cliente, se consulta su idex similar al id y se crea la entidad venta para el cliente
         Ventas venta = new Ventas(cliente);
-
+        // siclo para ir agregando productos, si no se procede a calcular la cuenta
         String continuar;
         do {
-            System.out.println("\nProductos disponibles:");
+            System.out.println("\nProductos disponibles:"); // mostrar el listado de productos
             for (int i = 0; i < tienda.getProductos().size(); i++) {
                 Producto p = tienda.getProductos().get(i);
                 System.out.println((i + 1) + ". " + p.getNombre() + " (Stock: " + p.getStock() + ")");
             }
 
-            int idxProducto = leerEntero("Selecciona producto: ") - 1;
+            int idxProducto = leerEntero("Selecciona producto: ") - 1; // solicita y guarda el producto sleccionado
             int cantidad = leerEntero("Cantidad: ");
-            Producto producto = tienda.getProductos().get(idxProducto);
-
-//            venta.registrarVenta(producto, cantidad);
-            
+            Producto producto = tienda.getProductos().get(idxProducto); // se crea el producto con el id de la lista de productos de la tienda
+            // logica que valida si hay stock del el producto
             boolean agregado = venta.agregarDetalle(producto, cantidad);
             if (agregado) {
                 System.out.println("Producto agregado a la venta.");
@@ -136,7 +138,7 @@ public class Main {
         venta.mostrarFactura();         // mostramos la factura al finalizar
         System.out.println("✅ Venta registrada correctamente.");
     }
-
+    // metodos para consultar 
     private static void consultarVentas() {
         System.out.println("\n--- Consultar Ventas ---");
         tienda.mostrarResumenVentas();
@@ -154,7 +156,9 @@ public class Main {
     }
     
     // ======== UTILIDADES ========
-    
+    /**
+     * metodos para ayudar a solicitar un campo por tipo de dato y validar la entrada
+     */
     private static String solicitarCampo(String nombre){
         System.out.print(nombre + ": ");
         String campo = sc.nextLine();
@@ -186,7 +190,9 @@ public class Main {
     }
     
     // ======== DATOS INICIALES ========
-
+    /**
+     * Datos de prueba para simular cargar una base 
+     */
     private static void cargarDatosIniciales() {
         System.out.println("Cargando datos iniciales...");
 

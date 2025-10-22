@@ -73,7 +73,7 @@ public class Ventas {
                 System.out.println(d.toString());
             }
             System.out.println("-----------------------------");
-            System.out.printf("TOTAL: %.2f%n", calcularTotal());
+            System.out.printf("TOTAL: $ %.2f%n", calcularTotal());
         }
         System.out.println("=============================\n");
     }
