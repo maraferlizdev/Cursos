@@ -12,30 +12,23 @@ import java.util.List;
  * @author dsi
  */
 public class Cliente {
+    // atributos del cliente
     private String nombre;
     private String correo;
     private int telefono;
     private List<Ventas> compras;
-
+    
+    // constructor vacio
     public Cliente() {
     }
-    
+    //  constructor para crear clientes
     public Cliente(String nombre, String correo, int telefono) {
         this.nombre = nombre;
         this.correo = correo;
         this.telefono = telefono;
         this.compras = new ArrayList<>();
     }
- 
-    public void registrarCliente(String nombre, String correo, int telefono){
-        this.nombre = nombre;
-        this.correo = correo;
-        this.telefono = telefono;
-        this.compras = new ArrayList<>();
-        
-        System.out.println("El cliente: " + nombre + " ha sido registrado con exito");
-    }
-    
+    //   Muesta las compras de un cliente que corresponden a una venta
     public void ConsultarCompras(){
         System.out.println("Consultando compras del cliente " + this.nombre + ":");
         
@@ -43,7 +36,7 @@ public class Cliente {
             venta.consultarVentas();
         }
     }
-    
+    //  Permite modificar los datos de un cliente registrado
     public void actualizarCliente(String nombre, String correo, int telefono){
         this.nombre = nombre;
         this.correo = correo;
@@ -51,23 +44,20 @@ public class Cliente {
         
         System.out.println("Información del cliente " + this.nombre + " actualizada.");
     }
-    
+    // Permite agregar una compra a un cliente
     public void agregarCompra(Ventas venta) {
         compras.add(venta);
     }
-    
+    // Devuelve el nombre de un cliente
     public String getNombre() {
         return nombre;
     }
-
+    // Devuelve el correo de un cliente
     public String getCorreo() {
         return correo;
     }
-
+    // Devuelve el teléfono de un cliente
     public int getTelefono() {
         return telefono;
     }
-
-    
-    
 }

@@ -76,20 +76,16 @@ public class Main {
         String categoria = solicitarCampo("Categoría");
         int stock = leerEntero("Stock inicial: ");
 
-        Producto producto = new Producto();
-        producto.registrarProducto(nombre, precio, categoria, stock);
-        tienda.agregarProducto(producto);
+        tienda.registrarProducto(nombre, precio, categoria, stock);
     }
 
     private static void registrarCliente() {
         registrarMenu("Cliente");
         String nombre = solicitarCampo("Nombre");
         String correo = solicitarCampo("Correo");
-        int telefono = leerEntero("Teléfono: ");
+        int telefono = leerEntero("Teléfono:");
         
-        Cliente cliente = new Cliente();
-        cliente.registrarCliente(nombre, correo, telefono);
-        tienda.registrarCliente(cliente);
+        tienda.registrarCliente(nombre, correo, telefono);
     }
 
     private static void registrarVenta() {
@@ -133,8 +129,6 @@ public class Main {
             continuar = sc.nextLine().trim().toLowerCase();
         } while (continuar.equals("s"));
 
-//        tienda.registrarVenta(venta);
-//        System.out.println("Venta registrada correctamente.");
         // Al terminar la composición de la venta:
         venta.calcularTotal();          // asegura que el total está actualizado
         tienda.registrarVenta(venta);  // persiste la venta en la tienda
@@ -197,15 +191,15 @@ public class Main {
         System.out.println("Cargando datos iniciales...");
 
         // Productos
-        tienda.agregarProducto(new Producto("Camisa Dream", 299.99, "Ropa", 2));
-        tienda.agregarProducto(new Producto("Pantalón Classic", 499.50, "Ropa", 1));
-        tienda.agregarProducto(new Producto("Tenis Urban", 899.00, "Calzado", 1));
-        tienda.agregarProducto(new Producto("Gorra Dreams", 149.00, "Accesorios", 3));
+        tienda.registrarProducto("Camisa Dream", 299.99, "Ropa", 2);
+        tienda.registrarProducto("Pantalón Classic", 499.50, "Ropa", 1);
+        tienda.registrarProducto("Tenis Urban", 899.00, "Calzado", 1);
+        tienda.registrarProducto("Gorra Dreams", 149.00, "Accesorios", 3);
 
         // Clientes
-        tienda.registrarCliente(new Cliente("Ana Torres", "ana.torres@mail.com", 551234567));
-        tienda.registrarCliente(new Cliente("Carlos López", "carlos.lopez@mail.com", 554567890));
-        tienda.registrarCliente(new Cliente("Mario Pérez", "maria.perez@mail.com", 556789012));
+        tienda.registrarCliente("Ana Torres", "ana.torres@mail.com", 551234567);
+        tienda.registrarCliente("Carlos López", "carlos.lopez@mail.com", 554567890);
+        tienda.registrarCliente("Mario Pérez", "maria.perez@mail.com", 556789012);
 
         System.out.println("Datos cargados correctamente.");
     }

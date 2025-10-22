@@ -86,7 +86,7 @@ public class Ventas {
                 cliente.getNombre(), totalVenta, detalles.size());
     }
 
-    // Getters
+    // Getters permiten consultar un dato
     public Cliente getCliente() { return cliente; }
     public List<DetalleVenta> getDetalles() { return detalles; }
     public double getTotalVenta() { return totalVenta; }
