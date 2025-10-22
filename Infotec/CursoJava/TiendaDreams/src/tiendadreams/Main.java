@@ -136,7 +136,7 @@ public class Main {
         tienda.registrarVenta(venta);  // persiste la venta en la tienda
         cliente.agregarCompra(venta);   // registra la compra en el historial del cliente
         venta.mostrarFactura();         // mostramos la factura al finalizar
-        System.out.println("✅ Venta registrada correctamente.");
+        System.out.println("Venta registrada correctamente.");
     }
     // metodos para consultar 
     private static void consultarVentas() {
