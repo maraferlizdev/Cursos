@@ -24,6 +24,8 @@ public class DetalleVenta {
     public int getCantidad() { return cantidad; }
     public double getSubtotal() { return subtotal; }
     // metodos para actualizar el subtotal
+    
+    
     public void actualizarSubtotal() {
         this.subtotal = producto.getPrecio() * cantidad;
     }

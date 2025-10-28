@@ -53,6 +53,7 @@ public class TiendaDreams {
                 v.consultarVentas();
             }
             System.out.println("Total de ventas: " + ventas.size());
+            System.out.println("");
         }
     }
     // Metodos para consultar las existencias

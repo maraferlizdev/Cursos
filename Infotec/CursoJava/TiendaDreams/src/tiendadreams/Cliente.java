@@ -44,7 +44,7 @@ public class Cliente {
         
         System.out.println("Información del cliente " + this.nombre + " actualizada.");
     }
-    // Permite agregar una compra a un cliente
+    // Permite agregar una compra a un cliente+++
     public void agregarCompra(Ventas venta) {
         compras.add(venta);
     }
