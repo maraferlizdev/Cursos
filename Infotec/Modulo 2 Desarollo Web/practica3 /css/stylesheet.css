@@ -1,0 +1,50 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  padding: 1rem 0;
+}
+
+img {
+  width: 80%;
+  height: auto;
+  max-height: 400px;
+}
+ .mis-imagenes{
+  width: 150px; 
+  height: 150px; 
+  object-fit: cover;
+ }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  filter: invert(1);
+}
+
+.carousel-indicators button {
+  background-color: black;
+}
+
+.carousel-indicators .active {
+  background-color: #333;
+}
+
+.min-widt-text {
+  min-width: 200px;
+}
+
+.justify-text {
+  text-align: justify;
+}
