@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-namespace App\Http\Controllers;
 // Agregar el modelo Evento
 use App\Models\Evento;
 // Agregar la clase Request para manejar las peticiones
@@ -21,8 +20,8 @@ class EventoController extends Controller
         $eventos = Evento::all();
         // Retornar los recursos recuperados
         $respuesta = [
-        'eventos' => $eventos,
-        'status' => 200,
+            'eventos' => $eventos,
+            'status' => 200,
         ];
         return response()->json($respuesta);
     }
@@ -40,17 +39,14 @@ class EventoController extends Controller
             'fecha_fin' => 'required|date',
             'ubicacion' => 'required',
         ]);
-
         // Si la petición no contiene todos los datos necesarios, retornar un mensaje de error
         if ($validator->fails()) {
             $respuesta = [
                 'message' => 'Datos faltantes',
                 'status' => 400, // Petición inválida
         ];
-
             return response()->json($respuesta, 400);
         }
-
         // Crear un nuevo recursos con los datos de la petición
         $evento = Evento::create([
             'titulo' => $request->titulo,
@@ -59,7 +55,6 @@ class EventoController extends Controller
             'fecha_fin' => $request->fecha_fin,
             'ubicacion' => $request->ubicacion,
         ]);
-
         // Si el recurso no se pudo crear, retornar un mensaje de error
         if (!$evento) {
             $respuesta = [
@@ -138,7 +133,6 @@ class EventoController extends Controller
         $evento->fecha_fin = $request->fecha_fin;
         $evento->ubicacion = $request->ubicacion;
         $evento->save();
-        
         // Retornar el recurso actualizado
         $respuesta = [
             'evento' => $evento,
