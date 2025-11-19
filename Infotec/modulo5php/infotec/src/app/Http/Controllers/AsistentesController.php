@@ -15,7 +15,7 @@ class AsistentesController extends Controller
     public function index()
     {
         // Recuperar todos los recursos
-        $asistentes = asistente::all();
+        $asistentes = Asistentes::all();
         // Retornar los recursos recuperados
         $respuesta = [
             'asistentes' => $asistentes,
@@ -45,7 +45,7 @@ class AsistentesController extends Controller
             return response()->json($respuesta, 400);
         }
         // Crear un nuevo recursos con los datos de la petición
-        $asistente = asistente::create([
+        $asistente = Asistentes::create([
             'nombre' => $request->nombre,
             'mail' => $request->mail,
             'telefono' => $request->telefono,
@@ -73,7 +73,7 @@ class AsistentesController extends Controller
     public function show($id)
     {
         // Recuperar el recurso especificado
-        $asistente = asistente::find($id);
+        $asistente = Asistentes::find($id);
 
         // Si el recurso no se pudo recuperar, retornar un mensaje de error
         if (!$asistente) {
@@ -97,7 +97,7 @@ class AsistentesController extends Controller
     public function update(Request $request, $id)
     {
         // Recuperar el recurso especificado
-        $asistente = asistente::find($id);
+        $asistente = Asistentes::find($id);
         // Si el recurso no se pudo recuperar, retornar un mensaje de error
         if (!$asistente) {
             $respuesta = [
@@ -108,10 +108,10 @@ class AsistentesController extends Controller
         }
         // Validar que la petición contenga todos los datos necesarios
         $validator = Validator::make($request->all(), [
-            'nombre' => $request->nombre,
-            'mail' => $request->mail,
-            'telefono' => $request->telefono,
-            'evento_id' => $request->evento_id,
+            'nombre' => 'required',
+            'mail' => 'required',
+            'telefono' => 'required',
+            'evento_id' => 'required',
         ]);
         // Si la petición no contiene todos los datos necesarios, retornar un mensaje de error
         if ($validator->fails()) {
@@ -141,7 +141,7 @@ class AsistentesController extends Controller
     public function destroy($id)
     {
         // Recuperar el recurso especificado
-        $asistente = asistente::find($id);
+        $asistente = Asistentes::find($id);
         // Si el recurso no se pudo recuperar, retornar un mensaje de error
         if (!$asistente) {
             $respuesta = [

@@ -31,12 +31,12 @@ Route::put('/ponentes/{ponente}', [PonentesController::class, 'update']);
 Route::delete('/ponentes/{id}', [PonentesController::class, 'destroy']);
 // ----Rutas para el recurso asistentes.
 // Recuperar todos los asistentes
-Route::get('/asistentes', [AsistenteController::class, 'index']);
+Route::get('/asistentes', [AsistentesController::class, 'index']);
 // Almacenar un asistente nuevo
-Route::post('/asistentes', [AsistenteController::class, 'store']);
+Route::post('/asistentes', [AsistentesController::class, 'store']);
 // Recuperar un asistente específico
-Route::get('/asistentes/{id}', [AsistenteController::class, 'show']);
+Route::get('/asistentes/{id}', [AsistentesController::class, 'show']);
 // Actualizar un asistente específico
-Route::put('/asistentes/{asistente}', [AsistenteController::class, 'update']);
+Route::put('/asistentes/{asistente}', [AsistentesController::class, 'update']);
 // Eliminar un asistente específico
-Route::delete('/asistentes/{id}', [AsistenteController::class, 'destroy']);
+Route::delete('/asistentes/{id}', [AsistentesController::class, 'destroy']);
